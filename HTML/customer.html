@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h2 class="logo">
+                Travel
+            </h2>
+            <ul class="nav-links">
+                <li>
+                    <a href="home.html">Home</a>
+                </li>
+                <li>
+                    <a href="tour.html">Tours</a>
+                </li>
+                <li>
+                    <a href="booking.html">Booking</a>
+                </li>
+                <li>
+                    <a href="customer.html">Customer</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="customer-search">
+            <h1>
+                Search Booking History
+            </h1>
+            <input 
+                type="tel"
+                id="phone-input"
+                placeholder="Enter phone number..."
+            >
+            <button id="search-customer-btn">
+                Search
+            </button>
+        </section>
+        <section id="result-section">
+            <p id="customer-greeting"></p>
+            <div id="history-list"></div>
+        </section>
+    </main>
+    <footer>
+        <p>2026 Travel Website</p>
+
+        <p>Email: travel@gmail.com</p>
+
+        <p>Phone: 0123456789</p>
+    </footer>
+        <script src ='../DATA/data.js'></script>
+        <script src="../UTILS/utils.js"></script>
+        <script src="../STORAGE/storage.js"></script>
+        <script src="../SERVICES/tourServices.js"></script>
+        <script src="../SERVICES/customerServices.js"></script>
+        <script src="../UI/customerUi.js"></script>
+        <script src="../MODULES/customer.js"></script>
+</body>
+</html>

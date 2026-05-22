@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Modal</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h2 class="logo">Travel</h2>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="tour.html">Tours</a></li>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="customer.html">Customer</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="booking-section">
+            <h1>Book Your Tour</h1>
+
+            <div id="booking-modal">
+                <section class="modal-content">
+                    <h2>Booking Tour</h2>
+
+                    <div class="form-group">
+                        <label for="customer-name">Customer Name</label>
+                        <br><br>
+                        <input type="text" id="customer-name" placeholder="Enter customer name">
+                    </div>
+
+                    <br>
+
+                    <div class="form-group">
+                        <label for="customer-phone">Phone Number</label>
+                        <br><br>
+                        <input type="tel" id="customer-phone" placeholder="Enter phone number">
+                    </div>
+
+                    <br>
+
+                    <div class="form-group">
+                        <label for="quantity">Quantity</label>
+                        <br><br>
+                        <input type="number" id="quantity" placeholder="Enter quantity" min="1" value = "">
+                    </div>
+
+                    <br>
+
+                    <section id="trip-info">
+                        <h2>Booked Trip Information</h2>
+
+                        <h3 id="trip-name"></h3>
+                        <p id="trip-location"></p>
+                        <p id="trip-price"></p>
+                        <p id="trip-start-date"></p>
+                        <p id="trip-end-date"></p>
+
+                        <div class="form-group">
+                            <label for="total-price">Total Price</label>
+                            <br><br>
+                            <input type="text" id="total-price" placeholder="$0" readonly>
+                        </div>
+
+                        <div class="modal-actions">
+                            <button id="confirm-booking-btn">Confirm Booking</button>
+                            <button id="close-booking-btn">Close</button>
+                        </div>
+                    </section>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>2026 Travel Website</p>
+        <p>Email: travel@gmail.com</p>
+        <p>Phone: 0123456789</p>
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
+    </footer>
+
+    <script src="../DATA/data.js"></script>
+    <script src="../UTILS/utils.js"></script>
+    <script src="../STORAGE/storage.js"></script>
+    <script src="../SERVICES/tourServices.js"></script>
+    <script src="../SERVICES/bookingServices.js"></script>
+    <script src="../UI/bookingUi.js"></script>
+    <script src="../MODULES/booking.js"></script>
+</body>
+</html>
