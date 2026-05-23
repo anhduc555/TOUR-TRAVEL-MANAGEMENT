@@ -28,5 +28,5 @@ function renderBookingHistory(tickets) {
 }
 function renderNoResult() {
     document.querySelector('#history-list').innerHTML 
-        = '<p class="no-result">Không tìm thấy lịch sử đặt tour.</p>';
+        = '<p class="no-result">No booking history found.</p>';
 }

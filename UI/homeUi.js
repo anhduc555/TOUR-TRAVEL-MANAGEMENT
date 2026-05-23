@@ -6,7 +6,7 @@ function renderFeaturedTours(){
             <div class = 'tour-card'>
                 <img src = "${t.image}" alt = "${t.tourName}">
                 <h3>${t.tourName}</h3>
-                <p><strong>Price: ${t.price.toLocaleString('vi-VN')} VND </strong></p>
+                <p><strong>Price: ${t.price.toLocaleString('en-US')} $</strong></p>
             </div>
         `
     });
