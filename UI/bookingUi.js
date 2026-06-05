@@ -1,5 +1,5 @@
-function renderTripIn4(tour){
-    if(!tour){
+function renderTripIn4(tour) {
+    if (!tour) {
         document.querySelector('#trip-info').innerHTML = `<p>No tour selected. Please go back and choose a tour.</p>`;
         return;
     }
@@ -10,6 +10,6 @@ function renderTripIn4(tour){
     document.querySelector('#trip-start-date').textContent = 'Start Date: ' + tour.startDate;
     document.querySelector('#trip-end-date').textContent = 'End Date: ' + tour.endDate;
 }
-function updateTotalPrice(total){
+function updateTotalPrice(total) {
     document.querySelector('#total-price').value = formatCurrency(total);
 }

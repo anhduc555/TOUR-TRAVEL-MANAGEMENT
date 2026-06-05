@@ -19,7 +19,7 @@ function validateForm(name, phone, quantity) {
 }
 function createTicket(tourId, name, phone, quatity, total) {
     let customer = DB.customers.find(c => c.phone === phone);
-    if(!customer){
+    if (!customer) {
         const savedCustomer = loadCustomerFromStorage();
         customer = savedCustomer.find(c => c.phone === phone);
     }

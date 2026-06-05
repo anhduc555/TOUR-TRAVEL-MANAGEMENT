@@ -1,14 +1,15 @@
-
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Tours</title>
     <link rel="stylesheet" href="../CSS/style.css">
 </head>
+
 <body>
     <header>
         <nav>
-        <h2 class="logo">Travel</h2>
+            <h2 class="logo">Travel</h2>
             <ul class="nav-links">
                 <li><a href="home.html">Home</a></li>
                 <li><a href="tour.html">Tours</a></li>
@@ -18,48 +19,49 @@
         </nav>
     </header>
     <main>
-<section id="tours-header">
-    <h1>Available Tours</h1>
-    <p>Find the journey that fits your next adventure</p>
-</section>
-<section id="search-section">
-    <div class="search-bar-wrap">
-        <input type="text" id="search-input" placeholder="Enter tour name">
-        <button id="search-btn" type="button">Search</button>
-    </div>
-</section>
-<section id="filter-section">
-    <div class="filters-wrap">
-        <span class="filter-label">Filters</span>
-        <input type="text" id="place-filter" class="filter-select" placeholder="Enter location">
-        <select id="price-filter" class="filter-select">
-            <option value="All">All</option>
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
-        </select>
-    </div>
-</section>
-<section id="tours-section">
-    <h2 class="section-title">Tour List</h2>
-    <div id="tour-list"></div>
-</section>
-</main>
-<footer>
-    <p>2026 Travel Website</p>
-    <p>Email: travel@gmail.com</p>
-    <p>Phone: 0123456789</p>
-    <a href="#">Facebook</a>
-    <a href="#">Instagram</a>
-    <a href="#">Twitter</a>
-</footer>
-<script src="../DATA/data.js"></script>
-<script src="../STORAGE/storage.js"></script>
-<script src="../UTILS/utils.js"></script>
-<script src="../SERVICES/tourServices.js"></script>
-<script src="../UI/tourUi.js"></script>
-<script src="../controller.js"></script>
-<script src="../MODULES/tour.js"></script>
-<script>initApp();</script>
+        <section id="tours-header">
+            <h1>Available Tours</h1>
+            <p>Find the journey that fits your next adventure</p>
+        </section>
+        <section id="search-section">
+            <div class="search-bar-wrap">
+                <input type="text" id="search-input" placeholder="Enter tour name">
+                <button id="search-btn" type="button">Search</button>
+            </div>
+        </section>
+        <section id="filter-section">
+            <div class="filters-wrap">
+                <span class="filter-label">Filters</span>
+                <input type="text" id="place-filter" class="filter-select" placeholder="Enter location">
+                <select id="price-filter" class="filter-select">
+                    <option value="All">All</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+            </div>
+        </section>
+        <section id="tours-section">
+            <h2 class="section-title">Tour List</h2>
+            <div id="tour-list"></div>
+        </section>
+    </main>
+    <footer>
+        <p>2026 Travel Website</p>
+        <p>Email: travel@gmail.com</p>
+        <p>Phone: 0123456789</p>
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
+    </footer>
+    <script src="../DATA/data.js"></script>
+    <script src="../STORAGE/storage.js"></script>
+    <script src="../UTILS/utils.js"></script>
+    <script src="../SERVICES/tourServices.js"></script>
+    <script src="../UI/tourUi.js"></script>
+    <script src="../controller.js"></script>
+    <script src="../MODULES/tour.js"></script>
+    <script>initApp();</script>
 </body>
+
 </html>

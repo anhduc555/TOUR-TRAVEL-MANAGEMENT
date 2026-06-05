@@ -1,18 +1,18 @@
 const phone = document.querySelector('#phone-input');
 const searchCusBtn = document.querySelector('#search-customer-btn');
 
-if(searchCusBtn){
+if (searchCusBtn) {
     searchCusBtn.addEventListener('click', () => {
         const p = phone ? phone.value : '';
-        if(p === ''){
+        if (p === '') {
             alert('Please enter phone number used to book tour!');
             return;
         }
         const bookingHistory = getBookingHistory(p);
-        if(!bookingHistory || !bookingHistory.cus){
+        if (!bookingHistory || !bookingHistory.cus) {
             renderNoResult();
         }
-        else{
+        else {
             renderGreeting(bookingHistory.cus.customerName);
             renderBookingHistory(bookingHistory.ticket);
         }

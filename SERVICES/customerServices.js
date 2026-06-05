@@ -1,11 +1,11 @@
-function getCustomerByPhone(phone){
-    if(!phone) return null;
+function getCustomerByPhone(phone) {
+    if (!phone) return null;
     return DB.customers.find(c => c.phone === phone);
 }
-function getTicketByCustomer(customer){
+function getTicketByCustomer(customer) {
     return DB.tickets.filter(t => t.customerId === customer.id);
 }
-function getTourByTicket(ticket){
+function getTourByTicket(ticket) {
     return DB.tours.find(t => t.id === ticket.tourId);
 }
 function getBookingHistory(phone) {

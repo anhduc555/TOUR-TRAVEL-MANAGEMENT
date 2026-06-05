@@ -1,5 +1,5 @@
-function renderGreeting(customerName){
-        document.querySelector('#customer-greeting').textContent = 'Hello, ' + customerName + '!';      
+function renderGreeting(customerName) {
+    document.querySelector('#customer-greeting').textContent = 'Hello, ' + customerName + '!';
 }
 function renderBookingHistory(tickets) {
     const historyList = document.querySelector('#history-list');
@@ -7,7 +7,7 @@ function renderBookingHistory(tickets) {
         renderNoResult();
         return;
     }
-    const sorted = [...tickets].sort((a, b) => 
+    const sorted = [...tickets].sort((a, b) =>
         new Date(b.bookingDate) - new Date(a.bookingDate)
     );
     const recent = sorted.slice(0, 4);
@@ -27,6 +27,6 @@ function renderBookingHistory(tickets) {
     historyList.innerHTML = html;
 }
 function renderNoResult() {
-    document.querySelector('#history-list').innerHTML 
+    document.querySelector('#history-list').innerHTML
         = '<p class="no-result">No booking history found.</p>';
 }

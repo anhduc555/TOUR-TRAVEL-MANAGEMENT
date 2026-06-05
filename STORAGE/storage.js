@@ -1,17 +1,17 @@
-function saveSelectedTour(tour){
+function saveSelectedTour(tour) {
     localStorage.setItem('selectedTour', JSON.stringify(tour));
 }
 
-function loadSelectedTour(){
+function loadSelectedTour() {
     const data = localStorage.getItem('selectedTour');
     return data ? JSON.parse(data) : null;
 }
 
-function clearSelectedTour(){
+function clearSelectedTour() {
     localStorage.removeItem('selectedTour');
 }
 
-function saveBookingHistory(ticket){
+function saveBookingHistory(ticket) {
     const his = loadBookingHistory();
     his.push(ticket);
     localStorage.setItem('bookingHistory', JSON.stringify(his));
@@ -26,16 +26,16 @@ function clearBookingHistory() {
     localStorage.removeItem('bookingHistory');
 }
 
-function saveCustomerToStorage(customer){
+function saveCustomerToStorage(customer) {
     const customers = loadCustomerFromStorage();
     const existed = customers.find(c => c.phone === customer.phone);
-    if(!existed){
+    if (!existed) {
         customers.push(customer);
         localStorage.setItem('savedCustomers', JSON.stringify(customers));
     }
 }
 
-function loadCustomerFromStorage(){
+function loadCustomerFromStorage() {
     const data = localStorage.getItem('savedCustomers');
     return data ? JSON.parse(data) : [];
 }
@@ -50,7 +50,7 @@ function saveLastTicketId(id) {
 function getLastCustomerId() {
     const data = localStorage.getItem('lastCustomerId');
     return data ? Number(data) : Math.max(...DB.customers.map(c => c.id));
-}   
+}
 function saveLastCustomerId(id) {
     localStorage.setItem('lastCustomerId', id);
 }
