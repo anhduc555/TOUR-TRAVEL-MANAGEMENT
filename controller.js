@@ -1,13 +1,3 @@
-function initApp() {
-    appState.tours = [...DB.tours];
-    appState.filteredTours = [...DB.tours];
-    renderTours(appState.filteredTours);
-    attachBookEvents();
-}
-function initHomepage() {
-    renderFeaturedTours();
-    renderReviews();
-}
 const appState = {
     tours: [],
     filteredTours: [],
@@ -20,3 +10,14 @@ const appState = {
         price: 'All',
     }
 };
+
+function initApp() {
+    appState.tours = [...DB.tours];
+    appState.filteredTours = [...DB.tours];
+    renderTours(appState.filteredTours);
+    attachBookEvents();
+}
+function initHomepage() {
+    renderFeaturedTours();
+    renderReviews();
+}

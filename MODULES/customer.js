@@ -1,20 +1,17 @@
-const phone = document.querySelector('#phone-input');
-const searchCusBtn = document.querySelector('#search-customer-btn');
 
-if (searchCusBtn) {
-    searchCusBtn.addEventListener('click', () => {
-        const p = phone ? phone.value : '';
-        if (p === '') {
-            alert('Please enter phone number used to book tour!');
-            return;
-        }
-        const bookingHistory = getBookingHistory(p);
-        if (!bookingHistory || !bookingHistory.cus) {
-            renderNoResult();
-        }
-        else {
-            renderGreeting(bookingHistory.cus.customerName);
-            renderBookingHistory(bookingHistory.ticket);
-        }
-    })
+const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+if (currentUser) {
+    const p = currentUser.phone;
+    const bookingHistory = getBookingHistory(p);
+    if (!bookingHistory || !bookingHistory.cus) {
+        renderNoResult();
+    }
+    else {
+        renderGreeting(bookingHistory.cus.customerName);
+        renderBookingHistory(bookingHistory.ticket);
+    }
+}
+else {
+    window.location.href = 'login.html';
 }

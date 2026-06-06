@@ -16,7 +16,7 @@ function renderFeaturedTours() {
 function renderReviews() {
     const reviewList = document.querySelector('#reviews-list');
     let html = '';
-    DB.rates.forEach(r => {
+    DB.rates.slice(0, 6).forEach(r => {
         const ticket = getTicketById(r.ticketId);
         if (!ticket) return;
         const customer = getCustomerById(ticket.customerId);

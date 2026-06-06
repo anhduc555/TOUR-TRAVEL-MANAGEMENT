@@ -17,7 +17,7 @@ function validateForm(name, phone, quantity) {
     }
     return true;
 }
-function createTicket(tourId, name, phone, quatity, total) {
+function createTicket(tourId, name, phone, quantity, total) {
     let customer = DB.customers.find(c => c.phone === phone);
     if (!customer) {
         const savedCustomer = loadCustomerFromStorage();

@@ -6,7 +6,12 @@ const nameInput = document.querySelector('#customer-name');
 const phoneInput = document.querySelector('#customer-phone');
 const confirmBtn = document.querySelector('#confirm-booking-btn');
 const refuseBtn = document.querySelector('#close-booking-btn');
+const loginUser = JSON.parse(localStorage.getItem('currentUser'));
 
+if (loginUser) {
+    if (nameInput) nameInput.value = loginUser.username;
+    if (phoneInput) phoneInput.value = loginUser.phone;
+}
 if (quaInput) {
     quaInput.addEventListener('input', () => {
         const qua = parseInt(quaInput.value);
@@ -22,10 +27,11 @@ if (quaInput) {
 if (confirmBtn) {
     confirmBtn.addEventListener('click', () => {
         if (!selectedTour) {
-            alert('No tour selected. Please go back and choose a tour.');
+            alert('No tour selected. Please go back and choose a tour!');
             window.location.href = 'tour.html';
             return;
         }
+
         const name = nameInput ? nameInput.value : '';
         const phone = phoneInput ? phoneInput.value : '';
         const qua = quaInput ? quaInput.value : '0';
