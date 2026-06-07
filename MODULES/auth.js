@@ -72,7 +72,7 @@ if (loginBtn) {
             window.location.href = "home.html";
         }
         else {
-            alert("Incorrect email password, please try again!");
+            alert("Incorrect email or password, please try again!");
             return;
         }
     })

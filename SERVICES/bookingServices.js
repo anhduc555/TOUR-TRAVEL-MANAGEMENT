@@ -11,6 +11,10 @@ function validateForm(name, phone, quantity) {
         alert('Please enter your phone!');
         return false;
     }
+    if (!validatePhone(phone)) {
+        alert('Invalid phone number!');
+        return false;
+    }
     if (!quantity || Number(quantity) < 1) {
         alert('Quantity must be at least 1!');
         return false;

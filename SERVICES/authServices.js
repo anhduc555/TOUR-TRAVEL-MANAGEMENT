@@ -18,10 +18,18 @@ function validateEmail(email) {
 
 function validatePhone(phone) {
     if (!isNaN(phone)) {
-        if (phone.length === 10 || phone.length === 11) return true;
-    }
-    else {
-        return false;
+        if (phone.length === 10) {
+            const prefix = phone.substring(0, 2);
+            if (
+                prefix === "03" ||
+                prefix === "05" ||
+                prefix === "07" ||
+                prefix === "08" ||
+                prefix === "09"
+            ) {
+                return true;
+            }
+        }
     }
     return false;
 }
