@@ -3,7 +3,6 @@ const appState = {
     filteredTours: [],
     selectedTour: null,
     booking: null,
-    currentCustomers: null,
     filters: {
         keyword: '',
         place: 'All',
