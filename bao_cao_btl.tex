@@ -1,0 +1,1109 @@
+\documentclass[12pt,a4paper]{article}
+
+% ============================================================
+%  GÓI LỆNH
+% ============================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T5]{fontenc}
+\usepackage[vietnamese]{babel}
+\usepackage[
+  top=3cm, bottom=3cm,
+  left=3.5cm, right=2cm
+]{geometry}
+\usepackage{mathptmx}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{setspace}
+\usepackage{indentfirst}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{parskip}
+\usepackage{forest}
+
+% ============================================================
+%  THIẾT LẬP FONT VÀ GIÃN DÒNG
+% ============================================================
+\setstretch{1.3}
+\setlength{\parindent}{1.27cm}
+\setlength{\parskip}{6pt}
+
+% ============================================================
+%  THIẾT LẬP MÀU SẮC VÀ CODE LISTING
+% ============================================================
+\definecolor{codebg}{rgb}{0.97,0.97,0.97}
+\definecolor{codeframe}{rgb}{0.7,0.7,0.7}
+\definecolor{codecomment}{rgb}{0.25,0.5,0.35}
+\definecolor{codekeyword}{rgb}{0.0,0.3,0.7}
+\definecolor{codestring}{rgb}{0.7,0.1,0.1}
+\definecolor{codenumber}{rgb}{0.5,0.5,0.5}
+
+\lstdefinelanguage{JavaScript}{
+  keywords={function, var, let, const, if, else, return, for, while,
+            do, switch, case, break, continue, new, this, typeof,
+            null, undefined, true, false, import, export, class,
+            extends, from, of, in, forEach, map, filter, find,
+            push, pop, some, sort, slice, Number, Math, JSON,
+            localStorage, document, window, alert},
+  keywordstyle=\color{codekeyword}\bfseries,
+  ndkeywords={},
+  sensitive=true,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{codecomment}\itshape,
+  stringstyle=\color{codestring},
+  morestring=[b]',
+  morestring=[b]",
+  morestring=[b]`
+}
+
+\lstset{
+  language=JavaScript,
+  basicstyle=\ttfamily\small,
+  backgroundcolor=\color{codebg},
+  frame=single,
+  rulecolor=\color{codeframe},
+  numbers=left,
+  numberstyle=\tiny\color{codenumber},
+  numbersep=8pt,
+  breaklines=true,
+  breakatwhitespace=false,
+  tabsize=2,
+  keepspaces=true,
+  showstringspaces=false,
+  captionpos=b,
+  xleftmargin=18pt,
+  literate=
+    {á}{{\'a}}1 {à}{{\`a}}1 {ả}{{\h{a}}}1 {ã}{{\~a}}1 {ạ}{{\d{a}}}1
+    {ă}{{\u{a}}}1 {ắ}{{\'\u{a}}}1 {ằ}{{\`\u{a}}}1 {ẳ}{{\h{\u{a}}}}1
+    {ẵ}{{\~\u{a}}}1 {ặ}{{\d{\u{a}}}}1
+    {â}{{\^a}}1 {ấ}{{\'\^a}}1 {ầ}{{\`\^a}}1 {ẩ}{{\h{\^a}}}1
+    {ẫ}{{\~\^a}}1 {ậ}{{\d{\^a}}}1
+    {é}{{\'e}}1 {è}{{\`e}}1 {ẻ}{{\h{e}}}1 {ẽ}{{\~e}}1 {ẹ}{{\d{e}}}1
+    {ê}{{\^e}}1 {ế}{{\'\^e}}1 {ề}{{\`\^e}}1 {ể}{{\h{\^e}}}1
+    {ễ}{{\~\^e}}1 {ệ}{{\d{\^e}}}1
+    {í}{{\'i}}1 {ì}{{\`i}}1 {ỉ}{{\h{i}}}1 {ĩ}{{\~i}}1 {ị}{{\d{i}}}1
+    {ó}{{\'o}}1 {ò}{{\`o}}1 {ỏ}{{\h{o}}}1 {õ}{{\~o}}1 {ọ}{{\d{o}}}1
+    {ô}{{\^o}}1 {ố}{{\'\^o}}1 {ồ}{{\`\^o}}1 {ổ}{{\h{\^o}}}1
+    {ỗ}{{\~\^o}}1 {ộ}{{\d{\^o}}}1
+    {ơ}{{\o}}1 {ớ}{{\'{\o}}}1 {ờ}{{\`{\o}}}1 {ở}{{\h{\o}}}1
+    {ỡ}{{\~{\o}}}1 {ợ}{{\d{\o}}}1
+    {ú}{{\'u}}1 {ù}{{\`u}}1 {ủ}{{\h{u}}}1 {ũ}{{\~u}}1 {ụ}{{\d{u}}}1
+    {ư}{{\uu}}1 {ứ}{{\'{\uu}}}1 {ừ}{{\`{\uu}}}1 {ử}{{\h{\uu}}}1
+    {ữ}{{\~{\uu}}}1 {ự}{{\d{\uu}}}1
+    {ý}{{\'y}}1 {ỳ}{{\`y}}1 {ỷ}{{\h{y}}}1 {ỹ}{{\~y}}1 {ỵ}{{\d{y}}}1
+    {đ}{{\dj}}1
+    {Á}{{\'A}}1 {À}{{\`A}}1 {Ả}{{\h{A}}}1 {Ã}{{\~A}}1 {Ạ}{{\d{A}}}1
+    {Ă}{{\u{A}}}1 {Â}{{\^A}}1 {É}{{\'E}}1 {Ê}{{\^E}}1 {Í}{{\'I}}1
+    {Ó}{{\'O}}1 {Ô}{{\^O}}1 {Ơ}{{\O}}1 {Ú}{{\'U}}1 {Ư}{{\UU}}1
+    {Đ}{{\DJ}}1
+}
+
+% ============================================================
+%  HEADER / FOOTER
+% ============================================================
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textit{Website Qu\h{a}n l\'{y} Tour Du l\d{i}ch -- Nh\'{o}m 10}}
+\fancyhead[R]{\small\textit{Bài tập lớn môn JavaScript}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ============================================================
+%  TIÊU ĐỀ CÁC PHẦN
+% ============================================================
+\titleformat{\section}[block]
+  {\large\bfseries\centering}{CHƯƠNG \thesection.}{0.5em}{}
+\titleformat{\subsection}[hang]
+  {\normalsize\bfseries}{\thesubsection.}{0.4em}{}
+\titleformat{\subsubsection}[hang]
+  {\normalsize\itshape}{\thesubsubsection.}{0.4em}{}
+
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+% ============================================================
+%  HYPERREF
+% ============================================================
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue,
+  citecolor=black,
+  pdfauthor={Nhom 10 -- VIENBKTBD},
+  pdftitle={Bao cao BTL JavaScript -- Website Quan ly Tour Du lich},
+}
+
+% ============================================================
+%  BẮT ĐẦU TÀI LIỆU
+% ============================================================
+\begin{document}
+\pagenumbering{roman}
+
+% ============================================================
+% TRANG BÌA
+% ============================================================
+\begin{titlepage}
+\thispagestyle{empty}
+
+% ============================================================
+%  KHUNG VIỀN TRANG BÌA
+% ============================================================
+\begin{tikzpicture}[remember picture, overlay]
+    % Viền ngoài đậm (3pt)
+    \draw[line width=3pt] 
+        ($(current page.north west) + (3cm,-2cm)$) 
+        rectangle 
+        ($(current page.south east) + (-1.5cm,2cm)$);
+        
+    % Viền trong mảnh (1pt)
+    \draw[line width=1pt] 
+        ($(current page.north west) + (3.15cm,-2.15cm)$) 
+        rectangle 
+        ($(current page.south east) + (-1.65cm,2.15cm)$);
+\end{tikzpicture}
+
+\begin{center}
+
+{\large\bfseries HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG}\\[2pt]
+{\large\bfseries VIỆN KHOA HỌC KỸ THUẬT BƯU ĐIỆN}\\[4pt]
+\rule{\linewidth}{1.5pt}\\[2pt]
+\rule{\linewidth}{0.5pt}\\[10pt]
+
+\includegraphics[width=2.8cm]{PTITLOGO.png}\\[8pt]
+
+{\Large\bfseries BÁO CÁO BÀI TẬP LỚN}\\[4pt]
+{\large\bfseries MÔN: LẬP TRÌNH JAVASCRIPT}\\[14pt]
+
+{\LARGE\bfseries\color{black}
+  XÂY DỰNG WEBSITE QUẢN LÝ TOUR DU LỊCH\\
+  BẰNG JAVASCRIPT
+}\\[16pt]
+
+\begin{tabular}{ll}
+\textbf{Giảng viên hướng dẫn:} & Trần Minh Hiếu \\[2pt]
+                               & Bùi Khắc Ngọc  \\[4pt]
+\textbf{Nhóm thực hiện:}       & Nhóm 10 \\[3pt]
+\textbf{Lớp:}                  & RIPT1302-20252-05\\[3pt]
+\end{tabular}\\[14pt]
+
+\begin{tabular}{|c|l|l|}
+\hline
+\textbf{STT} & \textbf{Họ và tên} & \textbf{Mã sinh viên} \\
+\hline
+1 & Lê Anh Đức   & B25DCCC294 \\
+\hline
+2 & Trần Lê Khoa & B25DCCC114  \\
+\hline
+3 & Vũ Đức Kiên  & B25DCCC120 \\
+\hline
+\end{tabular}\\[16pt]
+
+\vfill
+{\large Hà Nội, tháng 6 năm 2026}
+
+\end{center}
+\end{titlepage}
+% ============================================================
+% LỜI CẢM ƠN
+% ============================================================
+\newpage
+\section*{LỜI CẢM ƠN}
+\addcontentsline{toc}{section}{Lời cảm ơn}
+
+Chúng em xin gửi lời cảm ơn chân thành đến Ban Giám hiệu Học viện Công nghệ Bưu chính Viễn thông và Viện Khoa học Kỹ thuật Bưu Điện đã tạo điều kiện học tập và nghiên cứu thuận lợi cho sinh viên.
+
+Chúng em đặc biệt trân trọng cảm ơn giảng viên bộ môn Lập trình JavaScript đã tận tình giảng dạy, hướng dẫn và truyền đạt những kiến thức quý báu trong suốt học kỳ. Những bài giảng, tài liệu và gợi ý của thầy/cô là nền tảng vững chắc để nhóm hoàn thành đề tài này.
+
+Bài tập lớn được thực hiện trong khoảng thời gian ngắn, nhóm đã cố gắng hết sức song không thể tránh khỏi những thiếu sót. Chúng em rất mong nhận được sự góp ý, nhận xét của thầy/cô để có thể hoàn thiện hơn.
+
+Xin trân trọng cảm ơn!
+
+\bigskip
+\hfill\textit{Hà Nội, tháng 6 năm 2026}
+
+\hfill\textit{Nhóm 10}
+
+% ============================================================
+% MỤC LỤC
+% ============================================================
+\newpage
+\tableofcontents
+
+% ============================================================
+% NỘI DUNG CHÍNH
+% ============================================================
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+% ============================================================
+% CHƯƠNG 1: TỔNG QUAN
+% ============================================================
+\section{TỔNG QUAN VỀ ĐỀ TÀI}
+
+\subsection{Lý do chọn đề tài}
+
+Trong bối cảnh công nghệ thông tin phát triển mạnh mẽ, các ứng dụng web trở thành công cụ không thể thiếu trong mọi lĩnh vực của đời sống, đặc biệt là ngành du lịch. Du lịch Việt Nam ngày càng phát triển, nhu cầu tìm kiếm, đặt tour và quản lý chuyến đi của người dùng ngày một tăng cao. Việc xây dựng một website quản lý tour du lịch trực quan, dễ sử dụng không chỉ mang lại trải nghiệm tốt cho người dùng mà còn giúp doanh nghiệp du lịch vận hành hiệu quả hơn.
+
+Đề tài ``Xây dựng Website Quản lý Tour Du lịch bằng JavaScript'' được nhóm lựa chọn vì những lý do sau:
+
+\begin{itemize}[leftmargin=2cm]
+  \item Tính thực tiễn cao: sản phẩm phản ánh trực tiếp nhu cầu thực tế của người dùng và doanh nghiệp du lịch.
+  \item Phù hợp với phạm vi môn học: toàn bộ hệ thống được xây dựng bằng công nghệ Vanilla JavaScript, HTML và CSS -- ba công nghệ cốt lõi của môn học.
+  \item Cơ hội rèn luyện kỹ năng: đề tài bao gồm đủ các yêu cầu kỹ thuật như thao tác DOM, điều kiện, vòng lặp, hàm tự định nghĩa và lưu trữ dữ liệu cục bộ.
+\end{itemize}
+
+\subsection{Mục tiêu đề tài}
+
+Mục tiêu tổng quát của đề tài là xây dựng một website quản lý tour du lịch đầy đủ chức năng, trong đó:
+
+\begin{itemize}[leftmargin=2cm]
+  \item Người dùng có thể đăng ký tài khoản, đăng nhập và đăng xuất.
+  \item Trang chủ hiển thị các tour nổi bật và đánh giá từ khách hàng.
+  \item Trang danh sách tour hỗ trợ tìm kiếm, lọc theo địa điểm và mức giá.
+  \item Người dùng có thể đặt tour và xem lịch sử đặt tour cá nhân.
+  \item Dữ liệu được lưu trữ bền vững bằng \texttt{localStorage} của trình duyệt.
+\end{itemize}
+
+\subsection{Phạm vi và giới hạn}
+
+Đề tài tập trung vào phía \textit{front-end} (giao diện người dùng), không sử dụng server hay cơ sở dữ liệu thực. Toàn bộ dữ liệu được khởi tạo tĩnh trong tệp \texttt{DATA/data.js} và được lưu bền vững trong \texttt{localStorage} -- dữ liệu vẫn tồn tại sau khi đóng trình duyệt và chỉ mất khi người dùng xóa bộ nhớ trình duyệt. Giao diện được tối ưu cho màn hình máy tính để bàn (desktop); chưa tối ưu hoàn toàn cho thiết bị di động.
+
+\subsection{Công nghệ sử dụng}
+
+\begin{table}[H]
+\centering
+\caption{Công nghệ và thư viện sử dụng trong dự án}
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+\textbf{Công nghệ} & \textbf{Phiên bản} & \textbf{Mục đích sử dụng} \\
+\hline
+HTML5     & --      & Cấu trúc trang web \\
+\hline
+CSS3      & --      & Thiết kế giao diện; responsive ở mức cơ bản (desktop-first) \\
+\hline
+JavaScript (ES6+) & Vanilla & Xử lý logic, thao tác DOM, lưu trữ \\
+\hline
+localStorage & Web API & Lưu trữ dữ liệu phía client \\
+\hline
+\end{tabularx}
+\end{table}
+
+% ============================================================
+% CHƯƠNG 2: PHÂN TÍCH VÀ THIẾT KẾ
+% ============================================================
+\section{PHÂN TÍCH VÀ THIẾT KẾ HỆ THỐNG}
+
+\subsection{Phân tích yêu cầu}
+
+\subsubsection{Yêu cầu chức năng}
+
+Hệ thống cần đáp ứng các chức năng chính sau:
+
+\begin{enumerate}[leftmargin=2cm]
+  \item \textbf{Quản lý xác thực người dùng}: Đăng ký, đăng nhập, đăng xuất. Kiểm tra định dạng email, số điện thoại trước khi lưu.
+  \item \textbf{Trang chủ}: Hiển thị banner giới thiệu, danh sách tour nổi bật (featured tours), danh sách đánh giá của khách hàng.
+  \item \textbf{Danh sách tour}: Hiển thị tất cả các tour dưới dạng thẻ (card), hỗ trợ tìm kiếm theo tên và lọc theo địa điểm, mức giá.
+  \item \textbf{Đặt tour}: Nhập thông tin khách hàng, tự động tính tổng tiền, xác nhận và lưu vé.
+  \item \textbf{Trang cá nhân}: Xem lịch sử đặt tour, hiển thị 4 vé gần nhất theo thứ tự thời gian.
+\end{enumerate}
+
+\subsubsection{Yêu cầu phi chức năng}
+
+\begin{itemize}[leftmargin=2cm]
+  \item Giao diện thân thiện, dễ sử dụng, nhất quán về màu sắc và bố cục.
+  \item Dữ liệu người dùng được giữ nguyên khi tải lại trang nhờ \texttt{localStorage}.
+  \item Mã nguồn được tổ chức theo kiến trúc module rõ ràng, dễ bảo trì.
+  \item Thời gian phản hồi nhanh do không phụ thuộc vào network request.
+\end{itemize}
+
+\subsection{Thiết kế kiến trúc hệ thống}
+
+\subsubsection{Kiến trúc phân lớp}
+
+Dự án được tổ chức theo mô hình phân lớp (Layered Architecture) gồm 5 tầng riêng biệt:
+
+
+\begin{table}[H]
+\centering
+\caption{Kiến trúc phân lớp của hệ thống}
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+\textbf{Thư mục} & \textbf{Tầng} & \textbf{Chức năng} \\
+\hline
+\texttt{DATA/}    & Data Layer    & Dữ liệu tĩnh ban đầu (tours, customers, tickets, places) \\
+\hline
+\texttt{STORAGE/} & Storage Layer & Wrapper cho \texttt{localStorage}: đọc, ghi, xóa dữ liệu \\
+\hline
+\texttt{SERVICES/}& Service Layer & Business logic: validate, filter, tính toán, tạo đối tượng \\
+\hline
+\texttt{UI/}      & UI Layer      & Render HTML động vào DOM \\
+\hline
+\texttt{MODULES/} & Module Layer  & Gắn sự kiện (event listeners), điều phối luồng dữ liệu \\
+\hline
+\end{tabularx}
+\end{table}
+
+\subsubsection{Cấu trúc thư mục}
+
+\begin{lstlisting}[language={}, caption={Cây thư mục dự án}]
+BTL JS/
+|-- HTML/
+|   |-- login.html          # Trang dang ky / dang nhap
+|   |-- home.html          # Trang chu
+|   |-- tour.html          # Danh sach tour
+|   |-- booking.html       # Dat tour
+|   |-- customer.html      # Trang ca nhan
+|-- CSS/                   # File style cho moi trang
+|-- DATA/
+|   |-- data.js              # Du lieu khoi tao (tours, customers...)
+|-- STORAGE/
+|   |-- storage.js         # Quan ly localStorage
+|-- SERVICES/
+|   |-- authServices.js    # Xac thuc nguoi dung
+|   |-- tourServices.js    # Logic tour
+|   |-- bookingServices.js # Logic dat tour
+|   |-- customerServices.js
+|   |-- homeService.js
+|-- UI/
+|   |-- tourUi.js          # Render danh sach tour
+|   |-- bookingUi.js       # Render trang dat tour
+|   |-- customerUi.js      # Render trang ca nhan
+|   |-- homeUi.js          # Render trang chu
+|-- MODULES/
+|   |-- auth.js            # Xu ly su kien xac thuc
+|   |-- tour.js            # Xu ly su kien tim kiem / loc
+|   |-- booking.js         # Xu ly su kien dat tour
+|   |-- customer.js        # Xu ly su kien trang ca nhan
+|   |-- navbar.js          # Xu ly thanh dieu huong
+|-- UTILS/
+|   |-- utils.js           # Ham tien ich (formatCurrency, formatDate)
+|-- controller.js          # Khoi tao appState, ham init
+\end{lstlisting}
+
+\subsubsection{Sơ đồ luồng dữ liệu}
+
+Luồng dữ liệu trong hệ thống tuân theo thứ tự sau:
+
+\begin{center}
+\texttt{DATA/data.js} $\rightarrow$ \texttt{controller.js (appState)} $\rightarrow$ \texttt{SERVICES} $\rightarrow$ \texttt{UI} $\leftrightarrow$ \texttt{STORAGE/localStorage}
+\end{center}
+
+Cụ thể: Khi trang được tải, \texttt{controller.js} khởi tạo đối tượng \texttt{appState} từ dữ liệu trong \texttt{DB} (tệp \texttt{data.js}). Các module trong \texttt{MODULES/} lắng nghe sự kiện của người dùng, gọi hàm trong \texttt{SERVICES/} để xử lý nghiệp vụ, rồi chuyển kết quả sang \texttt{UI/} để render lên trang. Dữ liệu cần lưu lâu dài (lịch sử đặt tour, thông tin người dùng) được ghi vào \texttt{localStorage} qua tầng \texttt{STORAGE/}.
+
+\subsection{Mô hình dữ liệu}
+
+Dữ liệu được tổ chức theo mô hình mô phỏng quan hệ (không phải CSDL quan hệ thực sự), lưu trong đối tượng JavaScript \texttt{DB}. Đơn vị tiền tệ sử dụng trong toàn bộ dự án là \textbf{USD (\$)} theo quy ước dữ liệu mẫu:
+
+\begin{table}[H]
+\centering
+\caption{Cấu trúc bảng \texttt{tours}}
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+\textbf{Trường} & \textbf{Kiểu} & \textbf{Mô tả} \\
+\hline
+\texttt{id}        & Number & Khóa chính \\
+\hline
+\texttt{tourName}  & String & Tên tour \\
+\hline
+\texttt{price}     & Number & Giá tour (USD) \\
+\hline
+\texttt{startDate} & String & Ngày khởi hành \\
+\hline
+\texttt{endDate}   & String & Ngày kết thúc \\
+\hline
+\texttt{image}     & String & Đường dẫn ảnh \\
+\hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Cấu trúc bảng \texttt{tickets} (vé đặt tour)}
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+\textbf{Trường} & \textbf{Kiểu} & \textbf{Mô tả} \\
+\hline
+\texttt{id}          & Number & Khóa chính \\
+\hline
+\texttt{customerId}  & Number & Khóa ngoại sang \texttt{customers} \\
+\hline
+\texttt{tourId}      & Number & Khóa ngoại sang \texttt{tours} \\
+\hline
+\texttt{bookingDate} & String & Ngày đặt (ISO format) \\
+\hline
+\texttt{totalPrice}  & Number & Tổng tiền \\
+\hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Cấu trúc bảng \texttt{customers}}
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+\textbf{Trường} & \textbf{Kiểu} & \textbf{Mô tả} \\
+\hline
+\texttt{id}           & Number & Khóa chính \\
+\hline
+\texttt{customerName} & String & Họ và tên khách hàng \\
+\hline
+\texttt{phone}        & String & Số điện thoại \\
+\hline
+\texttt{country}      & String & Quốc gia \\
+\hline
+\end{tabularx}
+\end{table}
+
+\subsection{Thiết kế giao diện}
+
+Giao diện được xây dựng theo phong cách hiện đại, nhất quán trên toàn bộ các trang:
+
+\begin{itemize}[leftmargin=2cm]
+  \item \textbf{Bố cục}: Thanh điều hướng (navbar) cố định ở đầu trang, nội dung chính ở giữa, footer ở cuối.
+  \item \textbf{Màu sắc}: Sử dụng tông màu xanh lam và trắng làm chủ đạo, tạo cảm giác tin tưởng và chuyên nghiệp.
+  \item \textbf{Tour card}: Mỗi tour được hiển thị dưới dạng thẻ với ảnh đại diện, tên tour, địa điểm, ngày đi và giá tiền.
+  \item \textbf{Form đặt tour}: Thiết kế đơn giản, rõ ràng, hiển thị tổng tiền động khi người dùng thay đổi số lượng vé.
+\end{itemize}
+
+% ============================================================
+% CHƯƠNG 3: CÀI ĐẶT VÀ LẬP TRÌNH
+% ============================================================
+\section{CÀI ĐẶT VÀ LẬP TRÌNH}
+\subsection{Mã nguồn dự án}
+
+Toàn bộ mã nguồn của hệ thống được lưu trữ và quản lý trên GitHub nhằm hỗ trợ cộng tác nhóm, quản lý phiên bản và theo dõi lịch sử thay đổi.
+
+\textbf{Repository:}
+\url{https://github.com/anhduc555/TOUR-TRAVEL-MANAGEMENT}
+
+\subsection{Trạng thái ứng dụng -- appState}
+
+Toàn bộ trạng thái của ứng dụng được tập trung quản lý trong đối tượng \texttt{appState} định nghĩa trong \texttt{controller.js}. Đây là pattern ``Single Source of Truth'' giúp đồng bộ dữ liệu giữa các module.
+
+\begin{lstlisting}[caption={controller.js -- Khởi tạo trạng thái ứng dụng}]
+const appState = {
+    tours: [],
+    filteredTours: [],
+    selectedTour: null,
+    booking: null,
+    filters: {
+        keyword: '',
+        place: 'All',
+        price: 'All',
+    }
+};
+
+function initApp() {
+    appState.tours = [...DB.tours];
+    appState.filteredTours = [...DB.tours];
+    renderTours(appState.filteredTours);
+    attachBookEvents();
+}
+
+function initHomepage() {
+    renderFeaturedTours();
+    renderReviews();
+}
+\end{lstlisting}
+
+Hàm \texttt{initApp()} được gọi khi trang \texttt{tour.html} tải xong. Nó sao chép dữ liệu từ \texttt{DB.tours} vào \texttt{appState}, sau đó gọi \texttt{renderTours()} để hiển thị danh sách và \texttt{attachBookEvents()} để gắn sự kiện cho các nút ``Book Tour''.
+\subsection{Tầng Storage -- Quản lý localStorage}
+
+Tầng \texttt{STORAGE/storage.js} đóng gói toàn bộ thao tác với \texttt{localStorage} -- cơ chế lưu trữ dữ liệu cục bộ tích hợp sẵn trong trình duyệt -- giúp các tầng trên không phụ thuộc trực tiếp vào \texttt{localStorage}. Nhờ tính \textit{abstraction} này, nếu muốn thay thế \texttt{localStorage} bằng \texttt{IndexedDB} hay server-side storage, chỉ cần sửa nội dung các hàm trong tệp này mà không cần động vào code của \texttt{SERVICES/} hay \texttt{UI/}.
+
+\begin{lstlisting}[caption={storage.js -- Các hàm quản lý localStorage}]
+function saveSelectedTour(tour) {
+    localStorage.setItem('selectedTour', JSON.stringify(tour));
+}
+
+function loadSelectedTour() {
+    const data = localStorage.getItem('selectedTour');
+    return data ? JSON.parse(data) : null;
+}
+
+function saveBookingHistory(ticket) {
+    const his = loadBookingHistory();
+    his.push(ticket);
+    localStorage.setItem('bookingHistory', JSON.stringify(his));
+}
+
+function loadBookingHistory() {
+    const data = localStorage.getItem('bookingHistory');
+    return data ? JSON.parse(data) : [];
+}
+
+function saveCustomerToStorage(customer) {
+    const customers = loadCustomerFromStorage();
+    const existed = customers.find(c => c.phone === customer.phone);
+    if (!existed) {
+        customers.push(customer);
+        localStorage.setItem('savedCustomers', JSON.stringify(customers));
+    }
+}
+
+function getLastTicketId() {
+    const data = localStorage.getItem('lastTicketId');
+    return data ? Number(data) : Math.max(...DB.tickets.map(t => t.id));
+}
+\end{lstlisting}
+
+Thiết kế này áp dụng nguyên tắc \textit{encapsulation}: mỗi hàm đảm nhiệm một nhiệm vụ duy nhất. Hàm \texttt{getLastTicketId()} đáng chú ý vì nó sử dụng \texttt{Math.max} kết hợp \texttt{Array.map} để lấy ID lớn nhất từ dữ liệu gốc khi \texttt{localStorage} chưa có dữ liệu, đảm bảo ID tự tăng không bị trùng lặp.
+
+\subsection{Tầng Services -- Xử lý nghiệp vụ}
+
+\subsubsection{authServices.js -- Xác thực người dùng}
+
+\begin{lstlisting}[caption={authServices.js -- Kiểm tra định dạng email và số điện thoại}]
+function validateEmail(email) {
+    const validate = ['@gmail.com', '@yahoo.com', '@outlook.com'];
+    return validate.some(domain => email.includes(domain));
+}
+
+function validatePhone(phone) {
+    if (!isNaN(phone)) {
+        if (phone.length === 10) {
+            const prefix = phone.substring(0, 2);
+            if (
+                prefix === "03" ||
+                prefix === "05" ||
+                prefix === "07" ||
+                prefix === "08" ||
+                prefix === "09"
+            ) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+function saveUserToLocalStorage(user) {
+    const newUser = loadUserFromStorage();
+    const existed = newUser.find(u => u.username === user.username);
+    if (!existed) {
+        newUser.push(user);
+        localStorage.setItem('users', JSON.stringify(newUser));
+    }
+}
+\end{lstlisting}
+
+Hàm \texttt{validateEmail()} sử dụng \texttt{Array.some()} để kiểm tra email có chứa domain của các nhà cung cấp phổ biến. Lưu ý: cách kiểm tra bằng \texttt{includes()} không đủ chặt chẽ (có thể chấp nhận \texttt{fake@gmail.com.vn.fake}); trong thực tế nên dùng Regular Expression. Hàm validatePhone() kiểm tra tính hợp lệ của số điện thoại Việt Nam. Hàm xác nhận dữ liệu chỉ chứa ký tự số, có độ dài đúng 10 chữ số và bắt đầu bằng các đầu số di động phổ biến (03, 05, 07, 08, 09). Cách kiểm tra này giúp loại bỏ các chuỗi số không hợp lệ dù có đủ độ dài.
+
+
+\subsubsection{tourServices.js -- Logic tìm kiếm và lọc tour}
+
+\begin{lstlisting}[caption={tourServices.js -- Lọc tour theo nhiều tiêu chí}]
+function filterTours(tours, filters) {
+    let filtered = tours;
+
+    if (filters.keyword != '') {
+        filtered = filtered.filter(tour => {
+            return tour.tourName.toLowerCase()
+                       .includes(filters.keyword.toLowerCase());
+        });
+    }
+
+    if (filters.place != 'All') {
+        filtered = filtered.filter(tour => {
+            const place = getPlaceByTourId(tour.id);
+            if (!place) return false;
+            return place.placeName.toLocaleLowerCase()
+                        .includes(filters.place.toLowerCase());
+        });
+    }
+
+    if (filters.price != 'All') {
+        if (filters.price === 'High') {
+            filtered = filtered.filter(tour => tour.price > 320);
+        }
+        else if (filters.price === 'Medium') {
+            filtered = filtered.filter(tour =>
+                tour.price > 200 && tour.price <= 320);
+        }
+        else if (filters.price === 'Low') {
+            filtered = filtered.filter(tour => tour.price <= 200);
+        }
+    }
+
+    return filtered;
+}
+
+function getPlaceByTourId(tourId) {
+    const tourPlace = DB.tour_places.find(tp => tp.tourId === tourId);
+    if (!tourPlace) return null;
+    const place = DB.places.find(p => p.id === tourPlace.placeId);
+    return place;
+}
+\end{lstlisting}
+
+Hàm \texttt{filterTours()} áp dụng chuỗi lọc (pipeline filtering): mỗi bộ lọc (keyword, place, price) được áp dụng tuần tự, kết quả của bộ lọc trước là đầu vào của bộ lọc sau. Cách tiếp cận này giúp kết hợp nhiều điều kiện lọc một cách linh hoạt mà không cần viết nhiều nhánh \texttt{if-else} lồng nhau.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{tour_list.png}
+  \caption{Kết quả tìm kiếm và lọc tour}
+\end{figure}
+
+\subsubsection{bookingServices.js -- Xử lý đặt tour}
+
+\begin{lstlisting}[caption={bookingServices.js -- Tạo vé đặt tour}]
+function calculateTotalPrice(price, quantity) {
+    return price * Number(quantity);
+}
+
+function validateForm(name, phone, quantity) {
+    if (!name || name.trim() === '') {
+        alert('Please enter your name!');
+        return false;
+    }
+    if (!phone || phone.trim() === '') {
+        alert('Please enter your phone!');
+        return false;
+    }
+    if (!validatePhone(phone)) {
+        alert('Invalid phone number!');
+        return false;
+    }
+    if (!quantity || Number(quantity) < 1) {
+        alert('Quantity must be at least 1!');
+        return false;
+    }
+    return true;
+}
+
+function createTicket(tourId, name, phone, quantity, total) {
+    let customer = DB.customers.find(c => c.phone === phone);
+    if (!customer) {
+        const savedCustomer = loadCustomerFromStorage();
+        customer = savedCustomer.find(c => c.phone === phone);
+    }
+    if (!customer) {
+        const newId = getLastCustomerId() + 1;
+        saveLastCustomerId(newId);
+        customer = {
+            id: newId, customerName: name,
+            phone: phone, country: 'Unknown'
+        };
+        DB.customers.push(customer);
+    }
+    saveCustomerToStorage(customer);
+    const newTicketId = getLastTicketId() + 1;
+    saveLastTicketId(newTicketId);
+    const newTicket = {
+        id: newTicketId, customerId: customer.id,
+        tourId: tourId, bookingDate: formatDate(),
+        totalPrice: total,
+    };
+    DB.tickets.push(newTicket);
+    return newTicket;
+}
+\end{lstlisting}
+
+Hàm \texttt{createTicket()} thể hiện logic nghiệp vụ quan trọng: trước tiên tìm khách hàng trong \texttt{DB} rồi trong \texttt{localStorage}, nếu không tìm thấy thì tự động tạo khách hàng mới và đồng bộ xuống storage ngay lập tức qua \texttt{saveCustomerToStorage()}. Hàm validateForm() kiểm tra đầy đủ dữ liệu đầu vào bao gồm họ tên, số điện thoại và số lượng vé. Số điện thoại được xác thực thông qua hàm validatePhone() trước khi cho phép tạo vé.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.75\textwidth]{booking_form (2).png}
+  \caption{Chức năng tính tổng tiền khi đặt tour}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.65\textwidth]{popup.png}
+  \caption{Kết quả tạo vé đặt tour thành công}
+\end{figure}
+
+\subsection{Tầng UI -- Render giao diện động}
+
+\subsubsection{tourUi.js -- Hiển thị danh sách tour}
+
+\begin{lstlisting}[caption={tourUi.js -- Render danh sách tour ra DOM}]
+function renderTours(tours) {
+    const tourList = document.querySelector('#tour-list');
+    let html = '';
+    if (tours.length === 0) {
+        html = '<p>No tours found.</p>';
+    }
+    tours.forEach(tour => {
+        const place = getPlaceByTourId(tour.id);
+        html += `<div class="tour-card">
+                <img src="${tour.image}" alt="${tour.tourName}">
+                <h3>${tour.tourName}</h3>
+                <p><strong>Place:</strong>
+                   ${place ? place.placeName : 'Unknown place'}</p>
+                <p><strong>Start Date:</strong> ${tour.startDate}</p>
+                <p><strong>End Date:</strong>   ${tour.endDate}</p>
+                <p><strong>Price:</strong>
+                   ${tour.price.toLocaleString('en-US')} $</p>
+                <button class="book-btn" data-tour-id="${tour.id}">
+                    Book Tour
+                </button>
+            </div>`;
+    });
+    tourList.innerHTML = html;
+}
+\end{lstlisting}
+
+Hàm này minh họa kỹ thuật \textit{string concatenation} để xây dựng HTML động: gán toàn bộ chuỗi HTML trong vòng lặp \texttt{forEach} một lần vào \texttt{innerHTML} -- hiệu quả hơn so với tạo từng phần tử DOM riêng lẻ vì giảm số lần reflow/repaint. Tuy nhiên, cần lưu ý \texttt{innerHTML} tiềm ẩn nguy cơ XSS nếu dữ liệu đầu vào không được kiểm soát; trong dự án này dữ liệu đến từ \texttt{DB} nội bộ nên rủi ro thấp. Thuộc tính \texttt{data-tour-id} được sử dụng để truyền thông tin tour vào sự kiện click mà không cần biến toàn cục.
+
+\subsubsection{customerUi.js -- Hiển thị lịch sử đặt tour}
+
+\begin{lstlisting}[caption={customerUi.js -- Render lịch sử đặt tour}]
+function renderBookingHistory(tickets) {
+    const historyList = document.querySelector('#history-list');
+    if (tickets.length === 0) {
+        renderNoResult();
+        return;
+    }
+    const sorted = [...tickets].sort((a, b) =>
+        new Date(b.bookingDate) - new Date(a.bookingDate)
+    );
+    const recent = sorted.slice(0, 4);
+    let html = '';
+    recent.forEach(ticket => {
+        const tour = getTourByTicket(ticket);
+        html += `
+            <div class="history-card">
+                <h3>${tour ? tour.tourName : 'Unknown Tour'}</h3>
+                <p>Booking Date: ${ticket.bookingDate}</p>
+                <p>Start Date: ${tour ? tour.startDate : 'N/A'}</p>
+                <p>End Date:   ${tour ? tour.endDate   : 'N/A'}</p>
+                <p class="total">Total: ${formatCurrency(ticket.totalPrice)}</p>
+            </div>
+        `;
+    });
+    historyList.innerHTML = html;
+}
+\end{lstlisting}
+
+Hàm này kết hợp nhiều thao tác: sao chép mảng bằng spread operator (\texttt{[...tickets]}), sắp xếp giảm dần theo ngày, lấy 4 phần tử đầu bằng \texttt{slice(0,4)}, rồi render ra giao diện. Lưu ý: việc so sánh ngày bằng \texttt{new Date(string)} phụ thuộc vào định dạng chuỗi -- dự án dùng chuẩn \texttt{YYYY-MM-DD} (ISO 8601) nên hoạt động đúng. Toán tử ternary (\texttt{tour ? ... : ...}) xử lý trường hợp tour không tồn tại một cách gọn gàng.
+
+\subsection{Tầng Module -- Xử lý sự kiện}
+
+\subsubsection{tour.js -- Tìm kiếm và lọc tour}
+
+\begin{lstlisting}[caption={MODULES/tour.js -- Gắn sự kiện tìm kiếm và lọc}]
+const searchInput = document.querySelector('#search-input');
+const priceFilter = document.querySelector('#price-filter');
+
+if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+        appState.filters.keyword = e.target.value;
+        applyFilters();
+    });
+}
+
+if (priceFilter) {
+    priceFilter.addEventListener('change', (e) => {
+        appState.filters.price = e.target.value;
+        applyFilters();
+    });
+}
+
+function attachBookEvents() {
+    const bookButtons = document.querySelectorAll('.book-btn');
+    bookButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tourId = Number(btn.dataset.tourId);
+            const selectedTour = getTourById(tourId);
+            appState.selectedTour = selectedTour;
+            saveSelectedTour(selectedTour);
+            window.location.href = 'booking.html';
+        });
+    });
+}
+
+function applyFilters() {
+    const filtered = filterTours(appState.tours, appState.filters);
+    appState.filteredTours = filtered;
+    renderTours(filtered);
+    attachBookEvents();
+}
+\end{lstlisting}
+
+Lưu ý quan trọng: \texttt{attachBookEvents()} phải được gọi lại sau mỗi lần \texttt{renderTours()} vì việc gán \texttt{innerHTML} xóa toàn bộ DOM cũ, làm mất đi các event listener đã gắn trước đó. Đây là một kỹ thuật quan trọng trong lập trình DOM thuần.
+
+\subsubsection{auth.js -- Xử lý đăng ký và đăng nhập}
+
+\begin{lstlisting}[caption={MODULES/auth.js -- Xử lý sự kiện đăng nhập}]
+if (loginBtn) {
+    loginBtn.addEventListener('click', () => {
+        const email = loginEmail.value.trim();
+        const password = loginPassword.value.trim();
+        if (email === '' || password === '') {
+            loginError.textContent = "Please fill in all required fields";
+            return;
+        }
+        const users = loadUserFromStorage();
+        const found = users.find(u =>
+            u.email === email && u.password === password);
+        if (found) {
+            localStorage.setItem('currentUser', JSON.stringify(found));
+            alert('login successful!');
+            window.location.href = "home.html";
+        }
+        else {
+            alert("Incorrect email or password, please try again!");
+            return;
+        }
+    });
+}
+\end{lstlisting}
+
+\textit{Lưu ý bảo mật}: mật khẩu hiện được lưu dưới dạng plaintext trong \texttt{localStorage}. Đây là hạn chế đã biết của phiên bản hiện tại; trong môi trường thực tế cần mã hóa mật khẩu trước khi lưu trữ.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.65\textwidth]{login.png}
+  \caption{Giao diện đăng nhập hệ thống}
+\end{figure}
+
+\subsection{Tầng Utilities -- Các hàm tiện ích}
+
+\begin{lstlisting}[caption={utils.js -- Hàm định dạng tiền tệ và ngày tháng}]
+function formatCurrency(amount) {
+    return amount.toLocaleString('en-US') + ' $';
+}
+
+function formatDate() {
+    return new Date().toISOString().split('T')[0];
+}
+\end{lstlisting}
+
+Hàm \texttt{formatCurrency()} sử dụng \texttt{toLocaleString('en-US')} để tự động thêm dấu phẩy phân cách hàng nghìn (ví dụ: \texttt{1,500 \$}). Hàm \texttt{formatDate()} trả về ngày hiện tại dạng \texttt{YYYY-MM-DD} bằng cách tách chuỗi ISO 8601.
+
+\subsection{Danh sách hàm tự định nghĩa}
+
+Toàn bộ dự án định nghĩa \textbf{40 hàm} tự viết. Bảng dưới đây liệt kê các hàm chính:
+
+\begin{table}[H]
+\centering
+\caption{Danh sách hàm tự định nghĩa trong dự án}
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+\textbf{STT} & \textbf{Tên hàm} & \textbf{Mô tả} \\
+\hline
+1  & \texttt{initApp()}               & Khởi tạo ứng dụng, load tours từ DB \\
+\hline
+2  & \texttt{initHomepage()}           & Khởi tạo trang chủ \\
+\hline
+3  & \texttt{validateEmail(email)}     & Kiểm tra định dạng email \\
+\hline
+4  & \texttt{validatePhone(phone)}     & Kiểm tra định dạng số điện thoại \\
+\hline
+5  & \texttt{saveUserToLocalStorage(u)}& Lưu user vào localStorage \\
+\hline
+6  & \texttt{loadUserFromStorage()}    & Tải danh sách user từ localStorage \\
+\hline
+7  & \texttt{filterTours(tours,filters)}& Lọc tour theo nhiều tiêu chí \\
+\hline
+8  & \texttt{getPlaceByTourId(id)}     & Lấy địa điểm theo ID tour \\
+\hline
+9  & \texttt{getTourById(id)}          & Lấy tour theo ID \\
+\hline
+10 & \texttt{calculateTotalPrice(p,q)} & Tính tổng tiền \\
+\hline
+11 & \texttt{validateForm(n,p,q)}      & Kiểm tra form đặt tour \\
+\hline
+12 & \texttt{createTicket(...)}        & Tạo vé đặt tour mới \\
+\hline
+13 & \texttt{renderTours(tours)}       & Render danh sách tour ra DOM \\
+\hline
+14 & \texttt{renderBookingHistory(t)}  & Render lịch sử đặt tour \\
+\hline
+15 & \texttt{renderGreeting(name)}     & Hiển thị lời chào khách hàng \\
+\hline
+16 & \texttt{renderNoResult()}         & Hiển thị thông báo không có kết quả \\
+\hline
+17 & \texttt{attachBookEvents()}       & Gắn sự kiện cho nút Book Tour \\
+\hline
+18 & \texttt{applyFilters()}           & Áp dụng bộ lọc và re-render \\
+\hline
+19 & \texttt{saveSelectedTour(tour)}   & Lưu tour đã chọn vào localStorage \\
+\hline
+20 & \texttt{loadSelectedTour()}       & Tải tour đã chọn từ localStorage \\
+\hline
+21 & \texttt{clearSelectedTour()}      & Xóa tour đã chọn khỏi localStorage \\
+\hline
+22 & \texttt{saveBookingHistory(t)}    & Lưu vé vào lịch sử đặt tour \\
+\hline
+23 & \texttt{loadBookingHistory()}     & Tải lịch sử đặt tour \\
+\hline
+24 & \texttt{saveCustomerToStorage(c)} & Lưu khách hàng vào localStorage \\
+\hline
+25 & \texttt{loadCustomerFromStorage()}& Tải danh sách khách hàng \\
+\hline
+26 & \texttt{getLastTicketId()}        & Lấy ID vé lớn nhất hiện tại \\
+\hline
+27 & \texttt{saveLastTicketId(id)}     & Lưu ID vé mới nhất \\
+\hline
+28 & \texttt{getLastCustomerId()}      & Lấy ID khách hàng lớn nhất \\
+\hline
+29 & \texttt{saveLastCustomerId(id)}   & Lưu ID khách hàng mới nhất \\
+\hline
+30 & \texttt{formatCurrency(amount)}   & Định dạng tiền tệ \\
+\hline
+31 & \texttt{formatDate()}             & Lấy ngày hiện tại dạng chuỗi \\
+\hline
+32 & \texttt{renderFeaturedTours()}    & Render tour nổi bật trang chủ \\
+\hline
+33 & \texttt{renderReviews()}          & Render đánh giá khách hàng \\
+\hline
+34 & \texttt{clearBookingHistory()}    & Xóa lịch sử đặt tour khỏi localStorage \\
+\hline
+35 & \texttt{renderTripIn4(tour)}      & Render thông tin tour lên form đặt vé \\
+\hline
+36 & \texttt{updateTotalPrice(total)}  & Cập nhật hiển thị tổng tiền động \\
+\hline
+37 & \texttt{getCustomerByPhone(phone)}& Tìm khách hàng theo số điện thoại \\
+\hline
+38 & \texttt{getTicketByCustomer(c)}   & Lấy danh sách vé theo khách hàng \\
+\hline
+39 & \texttt{getTicketById(ticketId)}  & Lấy vé theo ID (dùng cho trang chủ) \\
+\hline
+40 & \texttt{getCustomerById(id)}      & Lấy khách hàng theo ID (dùng cho reviews) \\
+\hline
+\end{tabularx}
+\end{table}
+
+\subsection{Kiểm tra các yêu cầu kỹ thuật bắt buộc}
+
+\begin{table}[H]
+\centering
+\sloppy
+\caption{Đối chiếu yêu cầu kỹ thuật với cài đặt thực tế}
+\begin{tabularx}{\textwidth}{|l|X|l|}
+\hline
+\textbf{Yêu cầu} & \textbf{Cài đặt trong dự án} & \textbf{Trạng thái} \\
+\hline
+DOM Interaction   & \texttt{querySelector}, \texttt{innerHTML}, \texttt{textContent}, \texttt{addEventListener} sử dụng xuyên suốt tất cả module & \checkmark\ Đạt \\
+\hline
+$\geq$ 5 hàm tự định nghĩa & 40 hàm tự định nghĩa (xem Bảng 6) & \checkmark\ Đạt \\
+\hline
+If/Else           & Dùng trong \texttt{validateForm}, \texttt{filterTours}, \texttt{createTicket}, \texttt{auth.js} và nhiều nơi khác & \checkmark\ Đạt \\
+\hline
+Vòng lặp          & \texttt{forEach} trong \texttt{renderTours}, \texttt{renderBookingHistory}, \texttt{attachBookEvents}; \texttt{Array.filter} trong \texttt{filterTours} & \checkmark\ Đạt \\
+\hline
+Giao diện HTML/CSS & 5 trang HTML với CSS  & \checkmark\ Đạt \\
+\hline
+\end{tabularx}
+\end{table}
+
+% ============================================================
+% CHƯƠNG 4: KẾT QUẢ VÀ ĐÁNH GIÁ
+% ============================================================
+\section{KẾT QUẢ VÀ ĐÁNH GIÁ}
+
+\subsection{Kết quả đạt được}
+
+Sau quá trình xây dựng, website Quản lý Tour Du lịch đã đáp ứng \textbf{phần lớn} các mục tiêu đề ra:
+
+\begin{enumerate}[leftmargin=2cm]
+  \item \textbf{Hệ thống xác thực}: Người dùng đăng ký và đăng nhập thành công, thông tin được lưu trong \texttt{localStorage} và không mất khi tải lại trang.
+  \item \textbf{Tìm kiếm và lọc}: Chức năng lọc theo tên, địa điểm và mức giá hoạt động chính xác, kết quả cập nhật ngay lập tức không cần tải lại trang.
+  \item \textbf{Đặt tour}: Quy trình đặt tour hoàn chỉnh từ chọn tour, nhập thông tin, tính tiền đến xác nhận và lưu vé.
+  \item \textbf{Lịch sử đặt tour}: Trang cá nhân hiển thị đúng danh sách vé đã đặt, sắp xếp theo ngày gần nhất.
+  \item \textbf{Tính bền vững dữ liệu}: Mọi thao tác (đặt tour, đăng ký tài khoản) được lưu trong \texttt{localStorage} và tồn tại qua các lần tải lại trang.
+\end{enumerate}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{history.png}
+  \caption{Lịch sử đặt tour của khách hàng}
+\end{figure}
+
+\subsection{Hạn chế}
+
+\begin{itemize}[leftmargin=2cm]
+  \item Chưa có back-end thực sự: dữ liệu chỉ lưu cục bộ trên một trình duyệt, không chia sẻ được giữa nhiều thiết bị.
+  \item Chưa có chức năng hủy vé, thanh toán trực tuyến.
+  \item Chưa tối ưu cho thiết bị di động (responsive chưa hoàn thiện).
+  \item Mật khẩu người dùng chưa được mã hóa (lưu plaintext trong \texttt{localStorage}).
+\end{itemize}
+
+\subsection{Hướng phát triển}
+
+\begin{itemize}[leftmargin=2cm]
+  \item Tích hợp back-end (Node.js + MongoDB) để lưu trữ dữ liệu server-side.
+  \item Thêm chức năng thanh toán trực tuyến (VNPAY, Momo).
+  \item Mã hóa mật khẩu bằng bcrypt hoặc tương tự.
+  \item Xây dựng trang quản trị (admin) để thêm/sửa/xóa tour.
+  \item Tối ưu giao diện cho thiết bị di động.
+\end{itemize}
+
+% ============================================================
+% KẾT LUẬN
+% ============================================================
+\section*{KẾT LUẬN}
+\addcontentsline{toc}{section}{Kết luận}
+
+Đề tài ``Xây dựng Website Quản lý Tour Du lịch bằng JavaScript'' đã được nhóm hoàn thành với đầy đủ các chức năng đề ra. Thông qua quá trình thực hiện, nhóm đã củng cố và nâng cao kiến thức về:
+
+\begin{itemize}[leftmargin=2cm]
+  \item Lập trình JavaScript thuần (Vanilla JS, ES6+) bao gồm arrow function, template literal, spread operator, destructuring.
+  \item Thao tác DOM: truy vấn phần tử, thay đổi nội dung và thuộc tính, lắng nghe sự kiện.
+  \item Quản lý trạng thái ứng dụng (state management) không cần framework.
+  \item Thiết kế kiến trúc phân lớp, tổ chức code module hóa, dễ đọc và bảo trì.
+  \item Sử dụng Web Storage API (\texttt{localStorage}) để duy trì dữ liệu phía client.
+\end{itemize}
+
+Sản phẩm tuy còn một số hạn chế nhưng đã đáp ứng tốt yêu cầu của môn học và có tiềm năng phát triển thành một ứng dụng thực tế hoàn chỉnh trong tương lai.
+
+\bigskip
+\hfill\textit{Hà Nội, tháng 6 năm 2026}
+
+\hfill\textit{Nhóm 10}
+
+% ============================================================
+% TÀI LIỆU THAM KHẢO
+% ============================================================
+\newpage
+\section*{TÀI LIỆU THAM KHẢO}
+\addcontentsline{toc}{section}{Tài liệu tham khảo}
+
+\begin{enumerate}[leftmargin=2cm]
+  \item MDN Web Docs -- JavaScript Reference. \url{https://developer.mozilla.org/en-US/docs/Web/JavaScript}
+  \item MDN Web Docs -- Web Storage API. \url{https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API}
+  \item MDN Web Docs -- Document Object Model (DOM). \url{https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model}
+  \item W3Schools -- JavaScript Tutorial. \url{https://www.w3schools.com/js/}
+  \item JavaScript.info -- The Modern JavaScript Tutorial. \url{https://javascript.info/}
+\end{enumerate}
+
+% ============================================================
+% PHỤ LỤC
+% ============================================================
+\newpage
+\appendix
+\section*{PHỤ LỤC -- PHÂN CÔNG NHIỆM VỤ}
+\addcontentsline{toc}{section}{Phụ lục -- Phân công nhiệm vụ}
+
+\begin{table}[H]
+\centering
+\caption{Bảng phân công nhiệm vụ nhóm}
+\begin{tabularx}{\textwidth}{|c|l|l|X|}
+\hline
+\textbf{STT} & \textbf{Họ và tên} & \textbf{MSSV} & \textbf{Nhiệm vụ} \\
+\hline
+1 & Lê Anh Đức   & B25DCCC294 & Nhóm trưởng, thiết kế kiến trúc hệ thống, lập trình thao tác DOM và các logic hệ thống\\
+\hline
+2 & Trần Lê Khoa & B25DCCC114  & Thiết kế và lập trình giao diện (CSS), thiết kế slide, kiểm thử hệ thống \\
+\hline
+3 & Vũ Đức Kiên  & B25DCCC120 & Lập trình giao diện (HTML), thiết kế slide, thuyết trình\\
+\hline
+\end{tabularx}
+\end{table}
+
+\end{document}
