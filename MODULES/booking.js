@@ -8,6 +8,11 @@ const confirmBtn = document.querySelector('#confirm-booking-btn');
 const refuseBtn = document.querySelector('#close-booking-btn');
 const loginUser = JSON.parse(localStorage.getItem('currentUser'));
 
+if (!loginUser) {
+    alert('You need to log in to book tickets. Please log in first!');
+    window.location.href = 'home.html';
+}
+
 if (loginUser) {
     if (nameInput) nameInput.value = loginUser.username;
     if (phoneInput) phoneInput.value = loginUser.phone;
@@ -26,6 +31,13 @@ if (quaInput) {
 }
 if (confirmBtn) {
     confirmBtn.addEventListener('click', () => {
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (!currentUser) {
+            alert('You need to log in to book tickets. Please log in first!');
+            window.location.href = 'home.html';
+            return;
+        }
+
         if (!selectedTour) {
             alert('No tour selected. Please go back and choose a tour!');
             window.location.href = 'tour.html';
