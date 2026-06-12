@@ -8,11 +8,6 @@ const confirmBtn = document.querySelector('#confirm-booking-btn');
 const refuseBtn = document.querySelector('#close-booking-btn');
 const loginUser = JSON.parse(localStorage.getItem('currentUser'));
 
-if (!loginUser) {
-    alert('You need to log in to book tickets. Please log in first!');
-    window.location.href = 'home.html';
-}
-
 if (loginUser) {
     if (nameInput) nameInput.value = loginUser.username;
     if (phoneInput) phoneInput.value = loginUser.phone;
