@@ -1,0 +1,48 @@
+# ========================
+# OS Files
+# ========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ========================
+# Editor & IDE
+# ========================
+.vscode/
+.idea/
+*.suo
+*.user
+
+# ========================
+# Logs & Debug
+# ========================
+*.log
+npm-debug.log*
+
+# ========================
+# Node (if used in future)
+# ========================
+node_modules/
+package-lock.json
+
+# ========================
+# Build output (if any)
+# ========================
+dist/
+build/
+
+# ========================
+# Large/sensitive files
+# ========================
+*.pdf
+*.zip
+*.rar
+
+# ========================
+# Temp / scratch files
+# ========================
+*.tmp
+*.bak
+*~
+*.txt
+*.tex
